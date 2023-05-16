@@ -10,9 +10,8 @@
 
   <ion-list *ngIf="listaFilmes">
 
-    <!-- ngFor cada item da listaFilmes é adicionado como um "filme" -->
     <ion-item-sliding *ngFor="let filme of listaFilmes">
-      <ion-item lines="full" >
+      <ion-item lines="full" (click)="exibirFilme(filme)">
 
         <ion-thumbnail slot="start">
           <img *ngIf="filme.cartaz" src="{{filme.cartaz}}" />

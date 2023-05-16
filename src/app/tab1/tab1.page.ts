@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IFilme } from '../model/IFilme';
+import { NavigationExtras, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -8,30 +10,55 @@ import { IFilme } from '../model/IFilme';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(public router: Router
+    ) {}
 
-  //dentro de um vetor
   listaFilmes: IFilme[] = [
     {
-      nome: 'Mortal Kombat (2021)',
-      lancamento: '15/04/2021',
-      duracao: '1h50m',
-      classificacao: 2,
-      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/w8BVC3qrCWCiTHRz4Rft12dtQF0.jpg',
-      generos: ['Ação', 'Fantasia', 'Aventura'],
-      pagina: '/mortal-kombat',
-      favorito: true
+      nome: 'One Piece: Z (2012)',
+      lancamento: '15/04/2012',
+      duracao: '108 minutos',
+      classificacao: 10,
+      cartaz: 'https://f001.backblazeb2.com/file/papocine/2022/04/20220414-one-piece-z-papo-de-cinema-cartaz.png',
+      generos: ['Ação', 'Animação', 'Aventura'],
+      pagina: '/onePiece',
+      favorito: false
     },
     {
-      nome: 'Vingadores: Ultimato (2019)',
-      lancamento: '25/04/2019 (BR)',
-      duracao: '3h01m',
+      nome: 'Invocação do mal (2013)',
+      lancamento: '04/03/2013',
+      duracao: '1h 52min',
       classificacao: 10,
-      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg',
-      generos: ['Aventura', 'Ficção científica', 'Ação'],
-      pagina: '/avengers',
+      cartaz: 'https://br.web.img2.acsta.net/pictures/210/166/21016629_2013062820083878.jpg',
+      generos: ['Terror','Suspense','Aventura'],
+      pagina: '/incocacaoDoMal',
       favorito: false
-    }
+    },
+    {
+      nome: 'O Lorax',
+      lancamento: '19/07/2012',
+      duracao: '1h 26min',
+      classificacao: 8,
+      cartaz: 'https://upload.wikimedia.org/wikipedia/pt/5/55/Lorax-poster.jpg',
+      generos: ['Familia','Aventura'],
+      pagina: '/oLorax',
+      favorito: false
+    },
+    {
+      nome: 'Homem Aranha: Sem volta pra casa',
+      lancamento: '12/06/2021',
+      duracao: '2h 28min',
+      classificacao: 9,
+      cartaz: 'https://www.sonypictures.com.br/sites/brazil/files/2022-03/KEY%20ART_SPIDER%20NO%20WAY%20HOME.JPG',
+      generos: ['Ação', 'Aventura','Heróis'],
+      pagina: '/homemAranha',
+      favorito: false
+    },
   ];
+
+  exibirFilme(filme: IFilme){
+    const navigationExtras: NavigationExtras = {state:{paramFilme:filme}};
+    this.router.navigate(['filme-detalhe'],navigationExtras);
+  }
 
 }
